@@ -47,9 +47,9 @@
 # 타이머 인터럽트
 + Pending interrupt 가 ISR을 실행하기 위한 조건
   1. 인터럽트가 활성화 되어야 함
-    + 인터럽트는 interrupts(), noInterrupts() 함수로 활성화/비활성화 할 수 있음
+      + 인터럽트는 interrupts(), noInterrupts() 함수로 활성화/비활성화 할 수 있음
   2. 관련된 인터럽트 마스크가 활성화 되어야 함
-    + 인터럽트 마스크는 interrupt mask register(TIMSKx) 에서 setting/clearing bit 를 설정함으로써 활성화/비활성화 할 수 있음
+      + 인터럽트 마스크는 interrupt mask register(TIMSKx) 에서 setting/clearing bit 를 설정함으로써 활성화/비활성화 할 수 있음
 
 
 
