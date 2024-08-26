@@ -12,7 +12,7 @@
 + 타이머 하드웨어는 특별한 타이머 레지스터에 의해 설정됨
   + 아두이노 펌웨어에서는 모든 타이머가 1KHz frequency로 맞춰져있음
 
-## TIMER0, TIMER1(), TIMER2()
+## TIMER(), TIMER1(), TIMER2()
 + Timer() 시간관련 함수에 사용됨.
   + Timer() 레지스터를 변경하면 delay(), millis(), micros() 와 같은 시간관련 함수들도 영향을 받게 됨
 + 아두이노 UNO 보드의 경우 서보모터 라이브러리(Servo)가 Timer1을 사용합니다. (아두이노 Mega 보드에서는 Timer5 를 사용)
@@ -50,6 +50,22 @@
       + 인터럽트는 interrupts(), noInterrupts() 함수로 활성화/비활성화 할 수 있음
   2. 관련된 인터럽트 마스크가 활성화 되어야 함
       + 인터럽트 마스크는 interrupt mask register(TIMSKx) 에서 setting/clearing bit 를 설정함으로써 활성화/비활성화 할 수 있음
+![image](https://github.com/user-attachments/assets/66e265a5-f5a4-42c3-92a0-47dc2c9a68b0)
 
 
++ TIMER OVERFLOW
+  + 타이머 오버플로우는 타이머 카운트가 최대값에 도달함을 의미한다. 타이머가 오버플로우되면 인터럽트가 발생하고 TOVx 값이 TIFRx 에 설정됨
+  +  만약 TIMSKx에 TOIEx 값이 설정되어 있다면 TIMERx_OVF_vect 함수가 호출됨
+ +  PWM 과 TIMER
+   + 프로세서의 핀아웃 문서나 데이터 시트를 보면 OCRxA, OCRxB, OCRxC 로 표기된 PWM 핀이 있다. (x는 타이머 숫자 0~5) Mega를 제외한 일반적인 아두이노는 3개의 타이머와 6개의 PWM 핀이 있으며 아래와 같이 연관되도록 설정되어 있다.
+     + Pin 5, 6 : timer0 에 의해 컨트롤
+     + Pin 9, 10 : timer1 에 의해 컨트롤
+     + Pin 11, 3 : timer2 에 의해 컨트롤
 
+ ## 주의사항
+ + 서보 라이브러리(Servo library)는 Timer1 을 사용
+   + 서보 라이브러리를 사용할 경우 9, 10번 PWM 은 사용할 수 없음
+   + 아두이노 Mega 보드의 경우는 좀 더 복잡해서 사용하는 서보의 갯수에 따라 제한이 바뀐다.
+ + tone() 함수는 적어도 timer2 를 사용
+   + 이 경우 3, 11번 핀의 PWM을 사용할 수 없음
+   + Mega 보드의 경우는 9, 10번 핀을 사용할 수 없음
