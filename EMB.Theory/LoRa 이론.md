@@ -1,14 +1,14 @@
 ### IoT의 무선기술들
 - Short Range
-	- WiFi
-	- ZigBee
-	-Bluetooth
+  - WiFi
+  - ZigBee
+  -Bluetooth
 - Long Range
-	-  비면허대역 ← 면허대역의 가격 비쌈의 대체제들
-		- LoRa  ← SKT(계속 지원중)
-		- sigfox ← KT(접음)
-	- 면허대역 ← 가격이 비쌈
-		- Lte
+  - 비면허대역 ← 면허대역의 가격 비쌈의 대체제들
+    - LoRa  ← SKT(계속 지원중)
+    - sigfox ← KT(접음)
+  - 면허대역 ← 가격이 비쌈
+    - Lte
 - IP Base의 소프트웨어가 굉장히 무겁고, 배터리 소모량도 엄청남
 
 ## LPWA & LoRaWan
@@ -41,3 +41,14 @@
 ### LoRaWAN의 네트워크 레이어
 ![image](https://github.com/user-attachments/assets/8cc9b6fb-e8d7-4717-aaaa-8502b56aaf3e)
 - ISM 대역이란, 산업·과학·의료 등에 쓰이는 주파수 대역이다.
+
+- LoRa 맵 레이어들은 크게 클레스 A,B,C로 구성되어 있고 이것은, 서버단의 데이터들을 어떻게 단말기에 줄거냐에 대한 규약이다.
+  - A : 디폴트, 단말기단에서 구현
+  - B,C : 단말기에 사용법에 따라 다름
+
+#### class A,B,C 방식
+![image](https://github.com/user-attachments/assets/f8a1ebe3-b5de-471a-8795-ac9e068fac6b)
+
+- A : 단말단에서 데이터를 올리면, 일정 딜레이 타임 이후에 Rx윈도우를 열고, 서버단에서 데이터를 내려야하는데 데이터가 안내려오면 단말단이 무시한다. 데이터가 안들어왔으면 Rx2를 다시연다. 2채널은 tx와 rx채널과 무관하게 따로 채널이 연결이되고, 여기에도 데이터가 안들어오면 끝이다. 이 상황에는 서버단에서 단말기에 데이터를 내려다 줄수 없게된다.
+- B : 비콘과 연동해서 중간중간에 한번씩 서버와 동기화하는것, 비콘 타임에 맞춰서 바꾸는 시간을 연다.
+- C : Rx2 원도우를 상시열어두는 것, 배터리 소비량이 매우 높음
