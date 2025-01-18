@@ -11,7 +11,7 @@
   + setDataMode()함수로 설정
 + SPI는 초당 백만 바이트의 데이터를 전송할 수 있을 정도로 빠르게 동작할 수도 있지만 어떤 장치에서는 이와 같은 속도를 너무 빠를수도 있음 
   + 전송속도에 대한 부분은 setClockDivider()함수로 설정 가능
-    + 8MHz(/2)에서 125kHz(/128)
+    + 8MHz(/2)에서 125kHz(/128)<br>
 ![image](https://github.com/user-attachments/assets/4e10225b-3380-4cf0-b638-733233133e78)
 
 master code
