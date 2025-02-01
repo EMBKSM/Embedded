@@ -49,10 +49,9 @@ void AStar::find_location(int end, int start) {
     select_node->f = 0;
     select_node->g = 0;
     select_node->h = 0;
-
+    priority_queue<node*, vector<node*>, Compare> min_heap;
     while (!(select_node->node_num == end)) {
         closed_list.push_back(select_node);
-        priority_queue<node*, vector<node*>, Compare> min_heap;
         for (int i = 0; i < node_position_x.size(); i++) {
             auto a = find(closed_list.begin(), closed_list.end(), node_list.at(i));
             if (a == closed_list.end()) {
@@ -72,6 +71,7 @@ void AStar::find_location(int end, int start) {
             return;
         }
         select_node = min_heap.top();
+        min_heap.pop();
     }
 
     start_node = select_node;
@@ -84,6 +84,6 @@ void AStar::print_route() {
         cout << select_node->node_num << "->";
         select_node = select_node->parent;
     }
-    cout << "µµÂø";
+    cout << "ë„ì°©";
     return;
 }
