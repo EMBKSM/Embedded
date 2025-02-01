@@ -16,7 +16,7 @@ int main() {
 
     astar.find_location(4, 0);
 
-    cout << "ÃÖ´Ü °æ·Î: ";
+    cout << "ê²½ë¡œ: ";
     astar.print_route();
 
     return 0;
